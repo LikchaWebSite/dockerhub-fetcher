@@ -16,6 +16,7 @@ jobs:
       - name: Build and push to Docker
         uses: docker/build-push-action@v4.1.1
         with:
+          build_args: PORT=${{ vars.APP_PORT }}
           tags: ${{ vars.DOCKERHUB_USER }}/${{ vars.DOCKER_IMAGE }}
           pull: true
           push: true
