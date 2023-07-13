@@ -16,9 +16,9 @@ async function bootstrap() {
 
   app.useLogger(new CustomLogger());
 
-  const configService = app.get(ConfigService);
+  const configService = app.get(ConfigService<Record<string, string>>);
 
-  await app.listen(configService.get('PORT'));
+  await app.listen(configService.get('PORT'), configService.get('HOST'));
 
   console.log(`Listens: ${await app.getUrl()}`);
 }
